@@ -210,7 +210,7 @@ This project is licensed under the MIT License.
 
 ## Author
 
-- [Your Name](https://github.com/your-username)
+- [SHIVANSH AHIRWAL](https://github.com/Shivansh-Ahirwal)
 ```
 
 ### Key Sections Added:
