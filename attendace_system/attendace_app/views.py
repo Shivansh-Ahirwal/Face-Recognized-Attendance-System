@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User,Group
 from .models import Student, Attendance, StudentProfile, TeacherProfile
 from .register_face import register_face
+import subprocess
+from django.views.decorators.http import require_POST
 
 def is_teacher(user):
     return hasattr(user, 'teacherprofile')  # Check if user has TeacherProfile
@@ -196,3 +198,23 @@ def teacher_dashboard(request):
 @user_passes_test(is_student)
 def student_dashboard(request):
     return render(request, 'student_dashboard.html')
+
+@require_POST
+def recognize_attendance(request):
+    try:
+        # Run the recognize_attendance.py script as a subprocess
+        process = subprocess.Popen(
+            ["python", "recognize_attendance.py"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        stdout, stderr = process.communicate()
+
+        # Check for errors
+        if process.returncode != 0:
+            return JsonResponse({"status": "error", "message": stderr.decode("utf-8")}, status=500)
+
+        return JsonResponse({"status": "success", "message": "Attendance recognition completed successfully."})
+
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)}, status=500)
