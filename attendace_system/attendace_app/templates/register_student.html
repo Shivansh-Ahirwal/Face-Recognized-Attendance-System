@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Register{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Register Student</h2>
+    <!-- The form will send data to the 'register_student' view using POST method -->
+    <form action="{% url 'register_student' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %} <!-- CSRF token for protection -->
+        <div class="form-group">
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
+        </div>
+        <div class="form-group">
+            <label for="roll_no">Roll Number:</label>
+            <input type="text" id="roll_no" name="roll_no" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Student Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Register Student</button>
+        </div>
+    </form>
+    <!-- Optionally display a message after registration -->
+    {% if message %}
+    <div class="message">{{ message }}</div>
+    {% endif %}
+</div>
+{% endblock %}

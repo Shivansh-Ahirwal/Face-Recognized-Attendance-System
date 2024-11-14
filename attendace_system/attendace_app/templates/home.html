@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Attendance System</h1>
+        <p>Please select your role to log in:</p>
+
+        <div class="login-options">
+            <a href="{% url 'admin_login' %}" class="login-btn admin-btn">Admin Login</a>
+            <a href="{% url 'teacher_login' %}" class="login-btn teacher-btn">Teacher Login</a>
+            <a href="{% url 'student_login' %}" class="login-btn student-btn">Student Login</a>
+        </div>
+    </div>
+</body>
+</html>
