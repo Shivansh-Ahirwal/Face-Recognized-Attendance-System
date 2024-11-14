@@ -203,15 +203,4 @@ Add any other dependencies to `requirements.txt`.
 
 This project is licensed under the MIT License.
 
-## Acknowledgments
 
-- This project uses the [face_recognition](https://github.com/ageitgey/face_recognition) library.
-- OpenCV is used for real-time video processing.
-
-## Author
-
-- [SHIVANSH AHIRWAL](https://github.com/Shivansh-Ahirwal)
-```
-
-### Key Sections Added:
-- **API Endpoints**: Detailed explanation of each API available in the system.
